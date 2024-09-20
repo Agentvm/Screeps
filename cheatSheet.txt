@@ -1,0 +1,34 @@
+### Spawn Harvester
+Game.spawns["Spawn1"].spawnCreep([WORK, CARRY, MOVE],"Harvester" + resources.getTotalCreeps());
+
+### Loop through all creeps
+for (var name in Game.creeps) {
+    var creep = Game.creeps[name];
+    // Do something
+}
+
+### Count all creeps
+const totalCreeps = Object.keys(Game.creeps).length;
+console.log("Total number of creeps:", totalCreeps);
+
+### Loop through all your spawns
+for (const spawnName in Game.spawns) {
+    const spawn = Game.spawns[spawnName];
+    // Do something
+}
+
+### Move to
+creep.moveTo(Game.spawns["Spawn1"]);
+creep.moveTo(sources[0]);
+
+### Energy Costs
+Body Part       Effect	                                        Energy Cost
+______________________________________________________________________________
+MOVE	        Allows the creep to move	                    50
+WORK	        Allows the creep to harvest, build, repair	    100
+CARRY	        Allows the creep to carry resources	            50
+ATTACK	        Melee attack capability	                        80
+RANGED_ATTACK	Ranged attack capability	                    150
+HEAL	        Heals other creeps or itself	                250
+TOUGH	        Reduces damage taken (inexpensive body part)	10
+CLAIM	        Allows claiming new rooms	                    600
