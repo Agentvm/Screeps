@@ -1,25 +1,24 @@
-var harvesting = require("role.harvest");
-var spawner = require("spawner");
-var carrying = require("role.carry");
+const harvesting = require("role.harvest");
+const carrying = require("role.carry");
+const creepInfo = require("info.creeps");
+const spawner = require("spawner");
+const utility = require("utility");
+const resourceInfo = require("info.resources");
 
-//spawner.spawn();
+// Every n seconds, spawn a new creep
+//utility.callEveryNTicks(spawner.spawn, 30);
 
-// Find all creeps that have "harvester" in their name
-const harvester = _.filter(Game.creeps, (creep) => {
-  return creep.name.toLowerCase().includes("harvester");
-});
+// Spawn a new Creep when the energy is full
+if (resourceInfo.getEnergyPercentageFloat() > 0.9) spawner.spawn();
 
 // Triggering harvester behaviour on each harvester
-for (var creep of harvester) {
-  harvesting.keepHarvesting(creep); // Direktes Übergeben des Creep-Objekts
+const harvesterCreeps = creepInfo.getCreepsByName("harvester");
+for (var harvester of harvesterCreeps) {
+  harvesting.keepHarvesting(harvester); // Direktes Übergeben des Creep-Objekts
 }
 
-// Find all creeps that have "carry" in their name
-const carry = _.filter(Game.creeps, (creep) => {
-  return creep.name.toLowerCase().includes("carry");
-});
-
 // Triggering carry behaviour on each carrier
-for (var creep of carry) {
-  carrying.carry(creep); // Direktes Übergeben des Creep-Objekts
+const carryCreeps = creepInfo.getCreepsByName("carrier");
+for (var carry of carryCreeps) {
+  carrying.carry(carry); // Direktes Übergeben des Creep-Objekts
 }
