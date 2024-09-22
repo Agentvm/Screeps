@@ -8,6 +8,9 @@ const resourceInfo = require("info.resources");
 // Every n seconds, spawn a new creep
 //utility.callEveryNTicks(spawner.spawn, 30);
 
+// Spawn a new Creep when the energy is full
+if (resourceInfo.getEnergyPercentageFloat() > 0.9) spawner.spawn();
+
 // Triggering harvester behaviour on each harvester
 const harvesterCreeps = creepInfo.getCreepsByName("harvester");
 for (var harvester of harvesterCreeps) {
