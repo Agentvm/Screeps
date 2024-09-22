@@ -1,6 +1,6 @@
 ### Spawn Harvester
 Game.spawns["Spawn1"].spawnCreep([WORK, WORK, MOVE],"harvester0");
-Game.spawns["Spawn1"].spawnCreep([CARRY, CARRY, CARRY, CARRY, MOVE, MOVE],"carry0");
+Game.spawns["Spawn1"].spawnCreep([CARRY, CARRY, CARRY, CARRY, MOVE, MOVE],"carrier0");
 
 ### Loop through all creeps
 for (var name in Game.creeps) {
