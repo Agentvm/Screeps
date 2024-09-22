@@ -1,5 +1,5 @@
-var resourceInfo = require("info.resources");
-var creepInfo = require("info.creeps");
+const resourceInfo = require("info.resources");
+const creepInfo = require("info.creeps");
 
 // Function to spawn creeps based on their role (takes a creeps.CreepRole enum Instance)
 function spawn(creepRole, numberOfPartsToRemove = 0) {
