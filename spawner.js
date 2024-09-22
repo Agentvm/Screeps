@@ -5,6 +5,7 @@ const creepInfo = require("info.creeps");
 function spawn(creepRole, numberOfPartsToRemove = 0) {
   // Get the type of creep to spawn
   if (creepRole === undefined) creepRole = creepInfo.getPrioritizedCreepRole();
+  if (creepRole === null) return; // Max creeps
 
   // Check if we already have enough creeps of this role
   if (

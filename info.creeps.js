@@ -5,7 +5,7 @@ const MaxCreepsPerRole = 3;
 const CreepRoles = Object.freeze({
   CARRIER: {
     optionalParts: 4, // Parts that can be scrapped to lower energy count
-    maxCountPerSource: 4, // Maximum number of this role
+    maxCountPerSource: 3, // Maximum number of this role
     priority: 1, // Creation priority
   },
   HARVESTER: {
