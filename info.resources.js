@@ -1,6 +1,19 @@
-function getTotalCreeps(role) {
-  const totalCreeps = Object.values(Game.creeps).length;
-  return totalCreeps;
+function getEnergyPercentageFloat() {
+  let totalCapacity = 0;
+
+  // Loop through all spawns
+  for (const spawnName in Game.spawns) {
+    const spawn = Game.spawns[spawnName];
+    totalCapacity += spawn.store.getCapacity(RESOURCE_ENERGY);
+  }
+
+  // If there is no capacity (no spawns), return 0 to avoid division by zero
+  if (totalCapacity === 0) {
+    return 0;
+  }
+
+  // Return the percentage as a float (value between 0 and 1)
+  return getTotalEnergy() / totalCapacity;
 }
 
 function getTotalEnergy() {
@@ -41,5 +54,5 @@ function getTotalEnergy() {
 
 module.exports = {
   getTotalEnergy,
-  getTotalCreeps,
+  getEnergyPercentageFloat,
 };

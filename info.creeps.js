@@ -54,7 +54,7 @@ function getCreepsByName(creepName) {
   });
 }
 
-function getTotalCreepsCount(role) {
+function getTotalCreepsCount() {
   const totalCreeps = Object.values(Game.creeps).length;
   return totalCreeps;
 }
@@ -91,10 +91,16 @@ function getPrioritizedCreepRole() {
   return roleWithLowestCount; // Return the role name with the lowest creep count and highest priority
 }
 
+function getTotalCreeps(role) {
+  const totalCreeps = Object.values(Game.creeps).length;
+  return totalCreeps;
+}
+
 module.exports = {
   getCreepsByName,
   getTotalCreepsCount,
   getCreepCountByName,
   getPrioritizedCreepRole,
   CreepRoles,
+  getTotalCreeps,
 };
