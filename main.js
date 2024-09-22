@@ -2,8 +2,10 @@ var harvesting = require("role.harvest");
 var carrying = require("role.carry");
 var creepInfo = require("info.creeps");
 var spawner = require("spawner");
+const utility = require("utility");
 
-spawner.spawn();
+// Every n seconds, spawn a new creep
+//utility.callEveryNTicks(spawner.spawn, 30);
 
 // Triggering harvester behaviour on each harvester
 const harvesterCreeps = creepInfo.getCreepsByName("harvester");
