@@ -10,27 +10,27 @@ const CreepRoles = Object.freeze({
   },
   HARVESTER: {
     optionalParts: 1,
-    maxCountPerSource: 4,
+    maxCountPerSource: 3,
     priority: 0,
   },
   BUILDER: {
     optionalParts: 5,
-    maxCountPerSource: 4,
+    maxCountPerSource: 1,
     priority: 2,
   },
   TANK: {
     optionalParts: 1,
-    maxCountPerSource: 4,
+    maxCountPerSource: 1,
     priority: 4,
   },
   PRIEST: {
     optionalParts: 1,
-    maxCountPerSource: 4,
+    maxCountPerSource: 1,
     priority: 5,
   },
   RANGER: {
     optionalParts: 4,
-    maxCountPerSource: 4,
+    maxCountPerSource: 1,
     priority: 3,
   },
 });
@@ -82,6 +82,7 @@ function getPrioritizedCreepRole() {
       creepCount < lowestCount || // Check if this role has fewer creeps
       (creepCount === lowestCount && priority < lowestPriority) // Resolve ties by priority
     ) {
+      if (creepCount >= roleInfo.config.maxCountPerSource) continue;
       lowestCount = creepCount;
       lowestPriority = priority;
       roleWithLowestCount = roleInfo; // Store the role name
@@ -91,7 +92,7 @@ function getPrioritizedCreepRole() {
   return roleWithLowestCount; // Return the role name with the lowest creep count and highest priority
 }
 
-function getTotalCreeps(role) {
+function getTotalCreepsCount() {
   const totalCreeps = Object.values(Game.creeps).length;
   return totalCreeps;
 }
@@ -102,5 +103,5 @@ module.exports = {
   getCreepCountByName,
   getPrioritizedCreepRole,
   CreepRoles,
-  getTotalCreeps,
+  getTotalCreepsCount,
 };

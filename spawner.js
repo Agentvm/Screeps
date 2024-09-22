@@ -11,11 +11,7 @@ function spawn(creepRole, numberOfPartsToRemove = 0) {
     creepInfo.getCreepCountByName(creepRole.name) >=
     creepRole.config.maxCountPerSource
   ) {
-    console.log(
-      "[spawner]Max creeps of role ",
-      creepRole.toString(),
-      " reached"
-    );
+    console.log("[spawner]Max creeps of role ", creepRole.name, " reached");
     return;
   }
 
